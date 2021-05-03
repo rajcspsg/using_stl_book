@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.19 FATAL_ERROR)
 
 project(chapter-01 LANGUAGES CXX)
 
@@ -7,11 +7,18 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
-add_library(templates templates.hpp templates.cpp)
+add_library(templates STATIC ArrTemplates.hpp)
+set_target_properties(templates PROPERTIES LINKER_LANGUAGE CXX)
 
-add_executable(templates_test templates_test.cpp catch.hpp)
+add_executable(templates_test ArrTemplatesTest.cpp)
 target_link_libraries(templates_test templates)
 
 enable_testing()
 
 add_test(NAME catch_template_test COMMAND $<TARGET_FILE:templates_test> --success)
+
+include(GoogleTest)
+add_executable(ArrayGtest ArrTemplatesGtest.cpp)
+find_package(GTest)
+target_link_libraries(ArrayGtest GTest::GTest GTest::Main)
+gtest_discover_tests(ArrayGtest)
