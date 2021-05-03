@@ -1,8 +1,8 @@
 #include <iostream>
 #include <memory>
 #define CATCH_CONFIG_MAIN
-#include "catch.hpp"
-#include "ArrTemplates.hpp"
+#include "../catch.hpp"
+#include "../src/ArrTemplates.hpp"
 #include <cstddef>
 using namespace std;
 

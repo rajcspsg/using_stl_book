@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "ArrTemplates.hpp"
+#include "../src/ArrTemplates.hpp"
 
 class MyArrayTest: public :: testing::Test {
 
